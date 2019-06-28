@@ -1,3 +1,13 @@
 .progress {
     margin-bottom: 15px;
 }
+
+li.list-group-item > a {
+    text-decoration: None;
+    color: #444;
+}
+
+li.list-group-item > a:hover {
+    text-decoration: None;
+    color: #999;
+}
