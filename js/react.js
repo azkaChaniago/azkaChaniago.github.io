@@ -28,17 +28,27 @@ class Body extends React.Component {
 class Headings extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      icons: [
+        { iconName: 'icon ion-logo-facebook', linkName: 'https://www.facebook.com/azkachaniago', accountName: 'azkachaniago'},
+        { iconName: 'icon ion-logo-instagram', linkName: 'https://www.instagram.com/azka_chaniago/', accountName: '@azka_chaniago'},
+        { iconName: 'icon ion-md-mail', linkName: '#', accountName: 'azka24chaniago@gmail.com'},
+        { iconName: 'icon ion-logo-whatsapp', linkName: '#', accountName: '+62896 3197 5464'},
+        { iconName: 'icon ion-logo-github', linkName: 'https://github.com/azkaChaniago', accountName: 'azkaChaniago'},
+      ]
+    }
   }
 
   render() {
     return(
       <div className="jumbotron jumbotron-fluid" style={{ backgroundColor: '#343a40', color: '#ffffff' }}>
         <ProfileImage imageUrl="../images/pic.jpg"
-          widht="185"
+          width="185"
           height="185"
-          classImage="img-fluid rounded-circle"
-          caption="Hello.. my name is Muhammad Fadhil Azka"/>
+          classImage="img-fluid img-thumbnail rounded-circle"
+          caption="Muhammad Fadhil Azka"
+          subCaption="Mobile/Web Developer"/>
+        <SocialIcons icons={this.state.icons}/>
       </div>
     );
   }
@@ -48,9 +58,21 @@ class Headings extends React.Component {
 const ProfileImage = (props) => {
   return(
     <div className="container text-center">
-      <img src={ props.imageUrl } width={props.widht} height={props.height} className={props.classImage} style={{ marginBottom: '1.5rem' }}/>
-      <p className="lead">{props.caption}</p>
+      <img src={ props.imageUrl } width={props.width} height={props.height} className={props.classImage} style={{ marginBottom: '1.5rem' }}/>
+      <h2>{props.caption}</h2>
+      <p>{props.subCaption}</p>
     </div>
+  );
+}
+
+// Social Media Icons
+const SocialIcons = props => {
+  const items = props.icons.map((item, key) => <li key={key} data-toggle="tooltip" data-placement="bottom" title={item.accountName}><a href={item.linkName} target="_blank" ><i className={item.iconName}></i></a></li>); 
+
+  return(
+    <ul className="text-center list-inline">
+      {items}
+    </ul>
   );
 }
 
@@ -122,11 +144,9 @@ class Navbar extends React.Component {
   nav_theme = (theme) => {
     if (theme === 'dark') {
       return 'navbar navbar-expand-lg navbar-dark bg-dark';
-    } 
-    else if (theme === 'primary') {
+    } else if (theme === 'primary') {
       return 'navbar navbar-expand-lg navbar-dark bg-primary';
-    } 
-    else {
+    } else {
       return 'navbar navbar-expand-lg navbar-light bg-light';
     } 
   }
@@ -148,7 +168,7 @@ class Navbar extends React.Component {
         <div className="container">
           <a className="navbar-brand" href="#">Navbar</a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
+            <span className="icon ion-md-menu"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">

@@ -11,3 +11,20 @@ li.list-group-item > a:hover {
     text-decoration: None;
     color: #999;
 }
+
+.list-inline {
+    display: block;
+}
+
+.list-inline > li {
+    display: inline;
+    margin: 0.75rem;
+}
+
+.list-inline > li > a {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.list-inline > li > a:hover {
+    color: rgba(255, 255, 255, 1);
+}
